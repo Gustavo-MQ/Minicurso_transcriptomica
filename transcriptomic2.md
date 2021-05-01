@@ -1,6 +1,12 @@
 [Página anterior<<](transcriptomic.md)  [Indice del Curso](Indice.md)
 
-```bash
+```bashd
+## Carpeta del Bloque II
+
+![](https://drive.google.com/drive/folders/1xgFHh4d-KqTPpymmqObihTz0pUewwahz?usp=sharing)
+
+### Workflow RNA-seq
+
 #trimming
 for file in raw_data/*168*; do fastp -i $file -l 140 -q 30 -o trimmed/${file##*/}; done
 
@@ -31,6 +37,33 @@ cd ballgown
 
 ../../prepDE.py3
 ```
+### Directorio de trabajo
+
+``` bash
+── RNA_Seq/
+  │   └── genome/                    <- genoma de referencia (.FASTA) , anotación de genoma (.GTF/.GFF)
+  │  
+  │   └── reads/                     <- RNAseq data
+  │  
+  │   └── results/                   <- Archivos generados
+  │       ├── quality/               <- Archivos de calidad
+  │           ├──multiQC/            <- calidad conjunta
+  │           ├──rawdata/            <- calidad de data cruda
+  │       ├── trimmed/               <- Archivos filtrados
+  │       ├── sortmerna/             <- Archivos filtrados de rRNA
+  │           ├── aligned/           <- Secuencias alineadas a rRNA databases (con contenido de rRNA)
+  │           ├── filtered/          <- Secuencias con rRNA removidos  (libre de rRNA)
+  │           ├── logs/              <- logs
+  │       ├── map/                   <- Alineamientos al genoma de referencia
+  │           ├── aligned_bam/       <- Archivos de alineamiento (.BAM)
+  │           ├── aligned_logs/      <- logs
+  │       ├── counts/                <- Conteo de secuencias finales
+  │  
+  │   └── sortmerna_db/              <- rRNA databases
+  │       ├── rRNA_databases/        <- rRNA (bacteria, archea y eukaryotes)
+  │  
+  │   └── scripts/                   <- Scripts usados con el curso
+
 
 ```r
 
